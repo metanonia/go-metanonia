@@ -21,10 +21,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/ethdb/memorydb"
-	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/ethereum/go-ethereum/trie"
+	"github.com/metanonia/go-metanonia/common"
+	"github.com/metanonia/go-metanonia/ethdb/memorydb"
+	"github.com/metanonia/go-metanonia/rlp"
+	"github.com/metanonia/go-metanonia/trie"
 )
 
 // Tests that snapshot generation errors out correctly in case of a missing trie

@@ -25,11 +25,11 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/ethereum/go-ethereum/accounts/keystore"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/console/prompt"
-	"github.com/ethereum/go-ethereum/p2p/dnsdisc"
-	"github.com/ethereum/go-ethereum/p2p/enode"
+	"github.com/metanonia/go-metanonia/accounts/keystore"
+	"github.com/metanonia/go-metanonia/common"
+	"github.com/metanonia/go-metanonia/console/prompt"
+	"github.com/metanonia/go-metanonia/p2p/dnsdisc"
+	"github.com/metanonia/go-metanonia/p2p/enode"
 	"gopkg.in/urfave/cli.v1"
 )
 

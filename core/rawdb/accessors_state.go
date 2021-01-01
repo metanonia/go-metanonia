@@ -17,9 +17,9 @@
 package rawdb
 
 import (
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/ethereum/go-ethereum/log"
+	"github.com/metanonia/go-metanonia/common"
+	"github.com/metanonia/go-metanonia/ethdb"
+	"github.com/metanonia/go-metanonia/log"
 )
 
 // ReadPreimage retrieves a single preimage of the provided hash.

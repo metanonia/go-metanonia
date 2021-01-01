@@ -24,14 +24,14 @@ import (
 	"os"
 	"path"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/core/state"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/core/vm"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/params"
-	"github.com/ethereum/go-ethereum/tests"
+	"github.com/metanonia/go-metanonia/common"
+	"github.com/metanonia/go-metanonia/core"
+	"github.com/metanonia/go-metanonia/core/state"
+	"github.com/metanonia/go-metanonia/core/types"
+	"github.com/metanonia/go-metanonia/core/vm"
+	"github.com/metanonia/go-metanonia/log"
+	"github.com/metanonia/go-metanonia/params"
+	"github.com/metanonia/go-metanonia/tests"
 	"gopkg.in/urfave/cli.v1"
 )
 

@@ -29,17 +29,17 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/mclock"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/event"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/p2p/discover"
-	"github.com/ethereum/go-ethereum/p2p/discv5"
-	"github.com/ethereum/go-ethereum/p2p/enode"
-	"github.com/ethereum/go-ethereum/p2p/enr"
-	"github.com/ethereum/go-ethereum/p2p/nat"
-	"github.com/ethereum/go-ethereum/p2p/netutil"
+	"github.com/metanonia/go-metanonia/common"
+	"github.com/metanonia/go-metanonia/common/mclock"
+	"github.com/metanonia/go-metanonia/crypto"
+	"github.com/metanonia/go-metanonia/event"
+	"github.com/metanonia/go-metanonia/log"
+	"github.com/metanonia/go-metanonia/p2p/discover"
+	"github.com/metanonia/go-metanonia/p2p/discv5"
+	"github.com/metanonia/go-metanonia/p2p/enode"
+	"github.com/metanonia/go-metanonia/p2p/enr"
+	"github.com/metanonia/go-metanonia/p2p/nat"
+	"github.com/metanonia/go-metanonia/p2p/netutil"
 )
 
 const (

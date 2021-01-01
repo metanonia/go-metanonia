@@ -25,7 +25,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/ethereum/go-ethereum/log"
+	"github.com/metanonia/go-metanonia/log"
 )
 
 // walletDockerfile is the Dockerfile required to run a web wallet.
