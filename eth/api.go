@@ -40,34 +40,34 @@ import (
 	"github.com/metanonia/go-metanonia/trie"
 )
 
-// PublicEthereumAPI provides an API to access Ethereum full node-related
+// PublicMetanoniaAPI provides an API to access Metanonia full node-related
 // information.
-type PublicEthereumAPI struct {
-	e *Ethereum
+type PublicMetanoniaAPI struct {
+	e *Metanonia
 }
 
-// NewPublicEthereumAPI creates a new Ethereum protocol API for full nodes.
-func NewPublicEthereumAPI(e *Ethereum) *PublicEthereumAPI {
-	return &PublicEthereumAPI{e}
+// NewPublicMetanoniaAPI creates a new Metanonia protocol API for full nodes.
+func NewPublicMetanoniaAPI(e *Metanonia) *PublicMetanoniaAPI {
+	return &PublicMetanoniaAPI{e}
 }
 
 // Etherbase is the address that mining rewards will be send to
-func (api *PublicEthereumAPI) Etherbase() (common.Address, error) {
+func (api *PublicMetanoniaAPI) Etherbase() (common.Address, error) {
 	return api.e.Etherbase()
 }
 
 // Coinbase is the address that mining rewards will be send to (alias for Etherbase)
-func (api *PublicEthereumAPI) Coinbase() (common.Address, error) {
+func (api *PublicMetanoniaAPI) Coinbase() (common.Address, error) {
 	return api.Etherbase()
 }
 
 // Hashrate returns the POW hashrate
-func (api *PublicEthereumAPI) Hashrate() hexutil.Uint64 {
+func (api *PublicMetanoniaAPI) Hashrate() hexutil.Uint64 {
 	return hexutil.Uint64(api.e.Miner().HashRate())
 }
 
-// ChainId is the EIP-155 replay-protection chain id for the current ethereum chain config.
-func (api *PublicEthereumAPI) ChainId() hexutil.Uint64 {
+// ChainId is the EIP-155 replay-protection chain id for the current metanonia chain config.
+func (api *PublicMetanoniaAPI) ChainId() hexutil.Uint64 {
 	chainID := new(big.Int)
 	if config := api.e.blockchain.Config(); config.IsEIP155(api.e.blockchain.CurrentBlock().Number()) {
 		chainID = config.ChainID
@@ -78,11 +78,11 @@ func (api *PublicEthereumAPI) ChainId() hexutil.Uint64 {
 // PublicMinerAPI provides an API to control the miner.
 // It offers only methods that operate on data that pose no security risk when it is publicly accessible.
 type PublicMinerAPI struct {
-	e *Ethereum
+	e *Metanonia
 }
 
 // NewPublicMinerAPI create a new PublicMinerAPI instance.
-func NewPublicMinerAPI(e *Ethereum) *PublicMinerAPI {
+func NewPublicMinerAPI(e *Metanonia) *PublicMinerAPI {
 	return &PublicMinerAPI{e}
 }
 
@@ -94,11 +94,11 @@ func (api *PublicMinerAPI) Mining() bool {
 // PrivateMinerAPI provides private RPC methods to control the miner.
 // These methods can be abused by external users and must be considered insecure for use by untrusted users.
 type PrivateMinerAPI struct {
-	e *Ethereum
+	e *Metanonia
 }
 
 // NewPrivateMinerAPI create a new RPC service which controls the miner of this node.
-func NewPrivateMinerAPI(e *Ethereum) *PrivateMinerAPI {
+func NewPrivateMinerAPI(e *Metanonia) *PrivateMinerAPI {
 	return &PrivateMinerAPI{e: e}
 }
 
@@ -154,15 +154,15 @@ func (api *PrivateMinerAPI) GetHashrate() uint64 {
 	return api.e.miner.HashRate()
 }
 
-// PrivateAdminAPI is the collection of Ethereum full node-related APIs
+// PrivateAdminAPI is the collection of Metanonia full node-related APIs
 // exposed over the private admin endpoint.
 type PrivateAdminAPI struct {
-	eth *Ethereum
+	eth *Metanonia
 }
 
 // NewPrivateAdminAPI creates a new API definition for the full node private
-// admin methods of the Ethereum service.
-func NewPrivateAdminAPI(eth *Ethereum) *PrivateAdminAPI {
+// admin methods of the Metanonia service.
+func NewPrivateAdminAPI(eth *Metanonia) *PrivateAdminAPI {
 	return &PrivateAdminAPI{eth: eth}
 }
 
@@ -264,15 +264,15 @@ func (api *PrivateAdminAPI) ImportChain(file string) (bool, error) {
 	return true, nil
 }
 
-// PublicDebugAPI is the collection of Ethereum full node APIs exposed
+// PublicDebugAPI is the collection of Metanonia full node APIs exposed
 // over the public debugging endpoint.
 type PublicDebugAPI struct {
-	eth *Ethereum
+	eth *Metanonia
 }
 
 // NewPublicDebugAPI creates a new API definition for the full node-
-// related public debug methods of the Ethereum service.
-func NewPublicDebugAPI(eth *Ethereum) *PublicDebugAPI {
+// related public debug methods of the Metanonia service.
+func NewPublicDebugAPI(eth *Metanonia) *PublicDebugAPI {
 	return &PublicDebugAPI{eth: eth}
 }
 
@@ -301,15 +301,15 @@ func (api *PublicDebugAPI) DumpBlock(blockNr rpc.BlockNumber) (state.Dump, error
 	return stateDb.RawDump(false, false, true), nil
 }
 
-// PrivateDebugAPI is the collection of Ethereum full node APIs exposed over
+// PrivateDebugAPI is the collection of Metanonia full node APIs exposed over
 // the private debugging endpoint.
 type PrivateDebugAPI struct {
-	eth *Ethereum
+	eth *Metanonia
 }
 
 // NewPrivateDebugAPI creates a new API definition for the full node-related
-// private debug methods of the Ethereum service.
-func NewPrivateDebugAPI(eth *Ethereum) *PrivateDebugAPI {
+// private debug methods of the Metanonia service.
+func NewPrivateDebugAPI(eth *Metanonia) *PrivateDebugAPI {
 	return &PrivateDebugAPI{eth: eth}
 }
 

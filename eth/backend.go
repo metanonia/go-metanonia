@@ -315,7 +315,7 @@ func (s *Metanonia) APIs() []rpc.API {
 		{
 			Namespace: "eth",
 			Version:   "1.0",
-			Service:   NewPublicEthereumAPI(s),
+			Service:   NewPublicMetanoniaAPI(s),
 			Public:    true,
 		}, {
 			Namespace: "eth",

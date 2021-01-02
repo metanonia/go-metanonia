@@ -55,7 +55,7 @@ type LesServer struct {
 	lesCommons
 
 	ns          *nodestate.NodeStateMachine
-	archiveMode bool // Flag whether the ethereum node runs in archive mode.
+	archiveMode bool // Flag whether the Metanonia node runs in archive mode.
 	handler     *serverHandler
 	broadcaster *broadcaster
 	lesTopics   []discv5.Topic
@@ -75,7 +75,7 @@ type LesServer struct {
 	p2pSrv *p2p.Server
 }
 
-func NewLesServer(node *node.Node, e *eth.Ethereum, config *eth.Config) (*LesServer, error) {
+func NewLesServer(node *node.Node, e *eth.Metanonia, config *eth.Config) (*LesServer, error) {
 	ns := nodestate.NewNodeStateMachine(nil, nil, mclock.System{}, serverSetup)
 	// Collect les protocol version information supported by local node.
 	lesTopics := make([]discv5.Topic, len(AdvertiseProtocolVersions))
