@@ -27,17 +27,17 @@ import (
 	"testing"
 	"time"
 
-	"github.com/metanonia/gometanonnia/common"
-	"github.com/metanonia/gometanonnia/consensus"
-	"github.com/metanonia/gometanonnia/consensus/ethash"
-	"github.com/metanonia/gometanonnia/core/rawdb"
-	"github.com/metanonia/gometanonnia/core/state"
-	"github.com/metanonia/gometanonnia/core/types"
-	"github.com/metanonia/gometanonnia/core/vm"
-	"github.com/metanonia/gometanonnia/crypto"
-	"github.com/metanonia/gometanonnia/ethdb"
-	"github.com/metanonia/gometanonnia/params"
-	"github.com/metanonia/gometanonnia/trie"
+	"github.com/metanonia/go-metanonia/common"
+	"github.com/metanonia/go-metanonia/consensus"
+	"github.com/metanonia/go-metanonia/consensus/ethash"
+	"github.com/metanonia/go-metanonia/core/rawdb"
+	"github.com/metanonia/go-metanonia/core/state"
+	"github.com/metanonia/go-metanonia/core/types"
+	"github.com/metanonia/go-metanonia/core/vm"
+	"github.com/metanonia/go-metanonia/crypto"
+	"github.com/metanonia/go-metanonia/ethdb"
+	"github.com/metanonia/go-metanonia/params"
+	"github.com/metanonia/go-metanonia/trie"
 )
 
 // So we can deterministically seed different blockchains
@@ -1429,7 +1429,7 @@ func TestEIP161AccountRemoval(t *testing.T) {
 // tests that under weird reorg conditions the blockchain and its internal header-
 // chain return the same latest block/header.
 //
-// https://github.com/ethereum/go-ethereum/pull/15941
+// https://github.com/metanonia/go-metanonia/pull/15941
 func TestBlockchainHeaderchainReorgConsistency(t *testing.T) {
 	// Generate a canonical chain to act as the main dataset
 	engine := ethash.NewFaker()
@@ -1692,8 +1692,8 @@ func TestIncompleteAncientReceiptChainInsertion(t *testing.T) {
 // overtake the 'canon' chain until after it's passed canon by about 200 blocks.
 //
 // Details at:
-//  - https://github.com/ethereum/go-ethereum/issues/18977
-//  - https://github.com/ethereum/go-ethereum/pull/18988
+//  - https://github.com/metanonia/go-metanonia/issues/18977
+//  - https://github.com/metanonia/go-metanonia/pull/18988
 func TestLowDiffLongChain(t *testing.T) {
 	// Generate a canonical chain to act as the main dataset
 	engine := ethash.NewFaker()

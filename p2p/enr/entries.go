@@ -21,7 +21,7 @@ import (
 	"io"
 	"net"
 
-	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/metanonia/go-metanonia/rlp"
 )
 
 // Entry is implemented by known node record entry types.

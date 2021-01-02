@@ -21,8 +21,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/metanonia/go-metanonia/common"
+	"github.com/metanonia/go-metanonia/crypto"
 )
 
 func TestNetwork_Lookup(t *testing.T) {

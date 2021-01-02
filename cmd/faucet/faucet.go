@@ -67,7 +67,7 @@ var (
 	apiPortFlag = flag.Int("apiport", 8080, "Listener port for the HTTP API connection")
 	ethPortFlag = flag.Int("ethport", 30303, "Listener port for the devp2p connection")
 	bootFlag    = flag.String("bootnodes", "", "Comma separated bootnode enode URLs to seed with")
-	netFlag     = flag.Uint64("network", 0, "Network ID to use for the Ethereum protocol")
+	netFlag     = flag.Uint64("network", 0, "Network ID to use for the Metanonia protocol")
 	statsFlag   = flag.String("ethstats", "", "Ethstats network monitoring auth string")
 
 	netnameFlag = flag.String("faucet.name", "", "Network name to assign to the faucet")
@@ -82,7 +82,7 @@ var (
 	captchaSecret = flag.String("captcha.secret", "", "Recaptcha secret key to authenticate server side")
 
 	noauthFlag = flag.Bool("noauth", false, "Enables funding requests without authentication")
-	logFlag    = flag.Int("loglevel", 3, "Log level to use for Ethereum and the faucet")
+	logFlag    = flag.Int("loglevel", 3, "Log level to use for Metanonia and the faucet")
 
 	twitterBearerToken = flag.String("twitter.token", "", "Twitter bearer token to authenticate with the twitter API")
 )
@@ -193,16 +193,16 @@ func main() {
 // request represents an accepted funding request.
 type request struct {
 	Avatar  string             `json:"avatar"`  // Avatar URL to make the UI nicer
-	Account common.Address     `json:"account"` // Ethereum address being funded
+	Account common.Address     `json:"account"` // Metanonia address being funded
 	Time    time.Time          `json:"time"`    // Timestamp when the request was accepted
 	Tx      *types.Transaction `json:"tx"`      // Transaction funding the account
 }
 
-// faucet represents a crypto faucet backed by an Ethereum light client.
+// faucet represents a crypto faucet backed by an Metanonia light client.
 type faucet struct {
 	config *params.ChainConfig // Chain configurations for signing
-	stack  *node.Node          // Ethereum protocol stack
-	client *ethclient.Client   // Client connection to the Ethereum chain
+	stack  *node.Node          // Metanonia protocol stack
+	client *ethclient.Client   // Client connection to the Metanonia chain
 	index  []byte              // Index page to serve up on the web
 
 	keystore *keystore.KeyStore // Keystore containing the single signer
@@ -239,7 +239,7 @@ func newFaucet(genesis *core.Genesis, port int, enodes []*discv5.Node, network u
 		return nil, err
 	}
 
-	// Assemble the Ethereum light client protocol
+	// Assemble the Metanonia light client protocol
 	cfg := eth.DefaultConfig
 	cfg.SyncMode = downloader.LightSync
 	cfg.NetworkId = network
@@ -247,7 +247,7 @@ func newFaucet(genesis *core.Genesis, port int, enodes []*discv5.Node, network u
 	utils.SetDNSDiscoveryDefaults(&cfg, genesis.ToBlock(nil).Hash())
 	lesBackend, err := les.New(stack, &cfg)
 	if err != nil {
-		return nil, fmt.Errorf("Failed to register the Ethereum service: %w", err)
+		return nil, fmt.Errorf("Failed to register the Metanonia service: %w", err)
 	}
 
 	// Assemble the ethstats monitoring and reporting service'
@@ -286,7 +286,7 @@ func newFaucet(genesis *core.Genesis, port int, enodes []*discv5.Node, network u
 	}, nil
 }
 
-// close terminates the Ethereum connection and tears down the faucet.
+// close terminates the Metanonia connection and tears down the faucet.
 func (f *faucet) close() error {
 	return f.stack.Close()
 }
@@ -443,7 +443,7 @@ func (f *faucet) apiHandler(w http.ResponseWriter, r *http.Request) {
 				continue
 			}
 		}
-		// Retrieve the Ethereum address to fund, the requesting user and a profile picture
+		// Retrieve the Metanonia address to fund, the requesting user and a profile picture
 		var (
 			id       string
 			username string
@@ -474,7 +474,7 @@ func (f *faucet) apiHandler(w http.ResponseWriter, r *http.Request) {
 			id = username
 		default:
 			//lint:ignore ST1005 This error is to be displayed in the browser
-			err = errors.New("Something funky happened, please open an issue at https://github.com/ethereum/go-ethereum/issues")
+			err = errors.New("Something funky happened, please open an issue at https://github.com/metanonia/go-metanonia/issues")
 		}
 		if err != nil {
 			if err = sendError(conn, err); err != nil {
@@ -689,7 +689,7 @@ func sendSuccess(conn *websocket.Conn, msg string) error {
 }
 
 // authTwitter tries to authenticate a faucet request using Twitter posts, returning
-// the uniqueness identifier (user id/username), username, avatar URL and Ethereum address to fund on success.
+// the uniqueness identifier (user id/username), username, avatar URL and Metanonia address to fund on success.
 func authTwitter(url string, token string) (string, string, string, common.Address, error) {
 	// Ensure the user specified a meaningful URL, no fancy nonsense
 	parts := strings.Split(url, "/")
@@ -708,7 +708,7 @@ func authTwitter(url string, token string) (string, string, string, common.Addre
 	}
 
 	// Twiter API token isn't provided so we just load the public posts
-	// and scrape it for the Ethereum address and profile URL. We need to load
+	// and scrape it for the Metanonia address and profile URL. We need to load
 	// the mobile page though since the main page loads tweet contents via JS.
 	url = strings.Replace(url, "https://twitter.com/", "https://mobile.twitter.com/", 1)
 
@@ -733,7 +733,7 @@ func authTwitter(url string, token string) (string, string, string, common.Addre
 	address := common.HexToAddress(string(regexp.MustCompile("0x[0-9a-fA-F]{40}").Find(body)))
 	if address == (common.Address{}) {
 		//lint:ignore ST1005 This error is to be displayed in the browser
-		return "", "", "", common.Address{}, errors.New("No Ethereum address found to fund")
+		return "", "", "", common.Address{}, errors.New("No Metanonia address found to fund")
 	}
 	var avatar string
 	if parts = regexp.MustCompile("src=\"([^\"]+twimg.com/profile_images[^\"]+)\"").FindStringSubmatch(string(body)); len(parts) == 2 {
@@ -743,7 +743,7 @@ func authTwitter(url string, token string) (string, string, string, common.Addre
 }
 
 // authTwitterWithToken tries to authenticate a faucet request using Twitter's API, returning
-// the uniqueness identifier (user id/username), username, avatar URL and Ethereum address to fund on success.
+// the uniqueness identifier (user id/username), username, avatar URL and Metanonia address to fund on success.
 func authTwitterWithToken(tweetID string, token string) (string, string, string, common.Address, error) {
 	// Strip any query parameters from the tweet id
 	sanitizedTweetID := strings.Split(tweetID, "?")[0]
@@ -790,13 +790,13 @@ func authTwitterWithToken(tweetID string, token string) (string, string, string,
 	address := common.HexToAddress(regexp.MustCompile("0x[0-9a-fA-F]{40}").FindString(result.Data.Text))
 	if address == (common.Address{}) {
 		//lint:ignore ST1005 This error is to be displayed in the browser
-		return "", "", "", common.Address{}, errors.New("No Ethereum address found to fund")
+		return "", "", "", common.Address{}, errors.New("No Metanonia address found to fund")
 	}
 	return result.Data.AuthorID + "@twitter", result.Includes.Users[0].Username, result.Includes.Users[0].ProfileImageURL, address, nil
 }
 
 // authFacebook tries to authenticate a faucet request using Facebook posts,
-// returning the username, avatar URL and Ethereum address to fund on success.
+// returning the username, avatar URL and Metanonia address to fund on success.
 func authFacebook(url string) (string, string, common.Address, error) {
 	// Ensure the user specified a meaningful URL, no fancy nonsense
 	parts := strings.Split(strings.Split(url, "?")[0], "/")
@@ -811,7 +811,7 @@ func authFacebook(url string) (string, string, common.Address, error) {
 
 	// Facebook's Graph API isn't really friendly with direct links. Still, we don't
 	// want to do ask read permissions from users, so just load the public posts and
-	// scrape it for the Ethereum address and profile URL.
+	// scrape it for the Metanonia address and profile URL.
 	res, err := http.Get(url)
 	if err != nil {
 		return "", "", common.Address{}, err
@@ -825,7 +825,7 @@ func authFacebook(url string) (string, string, common.Address, error) {
 	address := common.HexToAddress(string(regexp.MustCompile("0x[0-9a-fA-F]{40}").Find(body)))
 	if address == (common.Address{}) {
 		//lint:ignore ST1005 This error is to be displayed in the browser
-		return "", "", common.Address{}, errors.New("No Ethereum address found to fund")
+		return "", "", common.Address{}, errors.New("No Metanonia address found to fund")
 	}
 	var avatar string
 	if parts = regexp.MustCompile("src=\"([^\"]+fbcdn.net[^\"]+)\"").FindStringSubmatch(string(body)); len(parts) == 2 {
@@ -834,14 +834,14 @@ func authFacebook(url string) (string, string, common.Address, error) {
 	return username + "@facebook", avatar, address, nil
 }
 
-// authNoAuth tries to interpret a faucet request as a plain Ethereum address,
+// authNoAuth tries to interpret a faucet request as a plain Metanonia address,
 // without actually performing any remote authentication. This mode is prone to
 // Byzantine attack, so only ever use for truly private networks.
 func authNoAuth(url string) (string, string, common.Address, error) {
 	address := common.HexToAddress(regexp.MustCompile("0x[0-9a-fA-F]{40}").FindString(url))
 	if address == (common.Address{}) {
 		//lint:ignore ST1005 This error is to be displayed in the browser
-		return "", "", common.Address{}, errors.New("No Ethereum address found to fund")
+		return "", "", common.Address{}, errors.New("No Metanonia address found to fund")
 	}
 	return address.Hex() + "@noauth", "", address, nil
 }

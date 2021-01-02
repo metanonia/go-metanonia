@@ -23,9 +23,9 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/ethereum/go-ethereum/accounts/abi"
-	"github.com/ethereum/go-ethereum/crypto"
 	fuzz "github.com/google/gofuzz"
+	"github.com/metanonia/go-metanonia/accounts/abi"
+	"github.com/metanonia/go-metanonia/crypto"
 )
 
 func unpackPack(abi abi.ABI, method string, inputType []interface{}, input []byte) bool {

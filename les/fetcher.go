@@ -22,7 +22,6 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ethereum/go-ethereum/p2p/enode"
 	"github.com/metanonia/go-metanonia/common"
 	"github.com/metanonia/go-metanonia/consensus"
 	"github.com/metanonia/go-metanonia/core"
@@ -32,6 +31,7 @@ import (
 	"github.com/metanonia/go-metanonia/ethdb"
 	"github.com/metanonia/go-metanonia/light"
 	"github.com/metanonia/go-metanonia/log"
+	"github.com/metanonia/go-metanonia/p2p/enode"
 )
 
 const (
