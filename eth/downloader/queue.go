@@ -26,12 +26,12 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/prque"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/metrics"
-	"github.com/ethereum/go-ethereum/trie"
+	"github.com/metanonia/go-metanonia/common"
+	"github.com/metanonia/go-metanonia/common/prque"
+	"github.com/metanonia/go-metanonia/core/types"
+	"github.com/metanonia/go-metanonia/log"
+	"github.com/metanonia/go-metanonia/metrics"
+	"github.com/metanonia/go-metanonia/trie"
 )
 
 const (

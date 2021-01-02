@@ -25,17 +25,17 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/ethereum/go-ethereum"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/eth/protocols/snap"
-	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/ethereum/go-ethereum/event"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/metrics"
-	"github.com/ethereum/go-ethereum/params"
-	"github.com/ethereum/go-ethereum/trie"
+	"github.com/metanonia/go-metanonia"
+	"github.com/metanonia/go-metanonia/common"
+	"github.com/metanonia/go-metanonia/core/rawdb"
+	"github.com/metanonia/go-metanonia/core/types"
+	"github.com/metanonia/go-metanonia/eth/protocols/snap"
+	"github.com/metanonia/go-metanonia/ethdb"
+	"github.com/metanonia/go-metanonia/event"
+	"github.com/metanonia/go-metanonia/log"
+	"github.com/metanonia/go-metanonia/metrics"
+	"github.com/metanonia/go-metanonia/params"
+	"github.com/metanonia/go-metanonia/trie"
 )
 
 var (
@@ -258,7 +258,7 @@ func New(checkpoint uint64, stateDb ethdb.Database, stateBloom *trie.SyncBloom, 
 // In addition, during the state download phase of fast synchronisation the number
 // of processed and the total number of known states are also returned. Otherwise
 // these are zero.
-func (d *Downloader) Progress() ethereum.SyncProgress {
+func (d *Downloader) Progress() metanonia.SyncProgress {
 	// Lock the current stats and return the progress
 	d.syncStatsLock.RLock()
 	defer d.syncStatsLock.RUnlock()
@@ -275,7 +275,7 @@ func (d *Downloader) Progress() ethereum.SyncProgress {
 	default:
 		log.Error("Unknown downloader chain/mode combo", "light", d.lightchain != nil, "full", d.blockchain != nil, "mode", mode)
 	}
-	return ethereum.SyncProgress{
+	return metanonia.SyncProgress{
 		StartingBlock: d.syncStatsChainOrigin,
 		CurrentBlock:  current,
 		HighestBlock:  d.syncStatsChainHeight,

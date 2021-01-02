@@ -23,10 +23,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/state"
-	"github.com/ethereum/go-ethereum/core/vm"
-	"github.com/ethereum/go-ethereum/params"
+	"github.com/metanonia/go-metanonia/common"
+	"github.com/metanonia/go-metanonia/core/state"
+	"github.com/metanonia/go-metanonia/core/vm"
+	"github.com/metanonia/go-metanonia/params"
 )
 
 type account struct{}

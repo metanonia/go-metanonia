@@ -22,11 +22,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/eth/protocols/eth"
-	"github.com/ethereum/go-ethereum/eth/protocols/snap"
-	"github.com/ethereum/go-ethereum/event"
-	"github.com/ethereum/go-ethereum/p2p"
+	"github.com/metanonia/go-metanonia/common"
+	"github.com/metanonia/go-metanonia/eth/protocols/eth"
+	"github.com/metanonia/go-metanonia/eth/protocols/snap"
+	"github.com/metanonia/go-metanonia/event"
+	"github.com/metanonia/go-metanonia/p2p"
 )
 
 var (

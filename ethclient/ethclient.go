@@ -22,14 +22,15 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/ethereum/go-ethereum"
 	"math/big"
 
-	"github.com/ethereum/go-ethereum"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/ethereum/go-ethereum/rpc"
+	"github.com/metanonia/go-metanonia"
+	"github.com/metanonia/go-metanonia/common"
+	"github.com/metanonia/go-metanonia/common/hexutil"
+	"github.com/metanonia/go-metanonia/core/types"
+	"github.com/metanonia/go-metanonia/rlp"
+	"github.com/metanonia/go-metanonia/rpc"
 )
 
 // Client defines typed wrappers for the Ethereum RPC API.
@@ -212,7 +213,7 @@ func (ec *Client) TransactionByHash(ctx context.Context, hash common.Hash) (tx *
 	if err != nil {
 		return nil, false, err
 	} else if json == nil {
-		return nil, false, ethereum.NotFound
+		return nil, false, metanonia.NotFound
 	} else if _, r, _ := json.tx.RawSignatureValues(); r == nil {
 		return nil, false, fmt.Errorf("server returned transaction without signature")
 	}
@@ -306,7 +307,7 @@ type rpcProgress struct {
 
 // SyncProgress retrieves the current progress of the sync algorithm. If there's
 // no sync currently running, it returns nil.
-func (ec *Client) SyncProgress(ctx context.Context) (*ethereum.SyncProgress, error) {
+func (ec *Client) SyncProgress(ctx context.Context) (*metanonia.SyncProgress, error) {
 	var raw json.RawMessage
 	if err := ec.c.CallContext(ctx, &raw, "eth_syncing"); err != nil {
 		return nil, err
@@ -320,7 +321,7 @@ func (ec *Client) SyncProgress(ctx context.Context) (*ethereum.SyncProgress, err
 	if err := json.Unmarshal(raw, &progress); err != nil {
 		return nil, err
 	}
-	return &ethereum.SyncProgress{
+	return &metanonia.SyncProgress{
 		StartingBlock: uint64(progress.StartingBlock),
 		CurrentBlock:  uint64(progress.CurrentBlock),
 		HighestBlock:  uint64(progress.HighestBlock),
@@ -396,7 +397,7 @@ func (ec *Client) FilterLogs(ctx context.Context, q ethereum.FilterQuery) ([]typ
 }
 
 // SubscribeFilterLogs subscribes to the results of a streaming filter query.
-func (ec *Client) SubscribeFilterLogs(ctx context.Context, q ethereum.FilterQuery, ch chan<- types.Log) (ethereum.Subscription, error) {
+func (ec *Client) SubscribeFilterLogs(ctx context.Context, q metanonia.FilterQuery, ch chan<- types.Log) (ethereum.Subscription, error) {
 	arg, err := toFilterArg(q)
 	if err != nil {
 		return nil, err
@@ -404,7 +405,7 @@ func (ec *Client) SubscribeFilterLogs(ctx context.Context, q ethereum.FilterQuer
 	return ec.c.EthSubscribe(ctx, ch, "logs", arg)
 }
 
-func toFilterArg(q ethereum.FilterQuery) (interface{}, error) {
+func toFilterArg(q metanonia.FilterQuery) (interface{}, error) {
 	arg := map[string]interface{}{
 		"address": q.Addresses,
 		"topics":  q.Topics,

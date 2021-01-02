@@ -25,10 +25,10 @@ import (
 	"testing"
 
 	"github.com/davecgh/go-spew/spew"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/core/state"
-	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/metanonia/go-metanonia/common"
+	"github.com/metanonia/go-metanonia/core/rawdb"
+	"github.com/metanonia/go-metanonia/core/state"
+	"github.com/metanonia/go-metanonia/crypto"
 )
 
 var dumper = spew.ConfigState{Indent: "    "}

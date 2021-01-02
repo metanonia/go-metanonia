@@ -20,36 +20,37 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"github.com/ethereum/go-ethereum"
 	"math/big"
 	"reflect"
 	"testing"
 	"time"
 
-	"github.com/ethereum/go-ethereum"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/consensus/ethash"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/eth"
-	"github.com/ethereum/go-ethereum/node"
-	"github.com/ethereum/go-ethereum/params"
+	"github.com/metanonia/go-metanonia"
+	"github.com/metanonia/go-metanonia/common"
+	"github.com/metanonia/go-metanonia/consensus/ethash"
+	"github.com/metanonia/go-metanonia/core"
+	"github.com/metanonia/go-metanonia/core/rawdb"
+	"github.com/metanonia/go-metanonia/core/types"
+	"github.com/metanonia/go-metanonia/crypto"
+	"github.com/metanonia/go-metanonia/eth"
+	"github.com/metanonia/go-metanonia/node"
+	"github.com/metanonia/go-metanonia/params"
 )
 
 // Verify that Client implements the ethereum interfaces.
 var (
-	_ = ethereum.ChainReader(&Client{})
-	_ = ethereum.TransactionReader(&Client{})
-	_ = ethereum.ChainStateReader(&Client{})
-	_ = ethereum.ChainSyncReader(&Client{})
-	_ = ethereum.ContractCaller(&Client{})
-	_ = ethereum.GasEstimator(&Client{})
-	_ = ethereum.GasPricer(&Client{})
-	_ = ethereum.LogFilterer(&Client{})
-	_ = ethereum.PendingStateReader(&Client{})
-	// _ = ethereum.PendingStateEventer(&Client{})
-	_ = ethereum.PendingContractCaller(&Client{})
+	_ = metanonia.ChainReader(&Client{})
+	_ = metanonia.TransactionReader(&Client{})
+	_ = metanonia.ChainStateReader(&Client{})
+	_ = metanonia.ChainSyncReader(&Client{})
+	_ = metanonia.ContractCaller(&Client{})
+	_ = metanonia.GasEstimator(&Client{})
+	_ = metanonia.GasPricer(&Client{})
+	_ = metanonia.LogFilterer(&Client{})
+	_ = metanonia.PendingStateReader(&Client{})
+	// _ = metanonia.PendingStateEventer(&Client{})
+	_ = metanonia.PendingContractCaller(&Client{})
 )
 
 func TestToFilterArg(t *testing.T) {

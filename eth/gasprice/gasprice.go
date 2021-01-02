@@ -22,11 +22,11 @@ import (
 	"sort"
 	"sync"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/params"
-	"github.com/ethereum/go-ethereum/rpc"
+	"github.com/metanonia/go-metanonia/common"
+	"github.com/metanonia/go-metanonia/core/types"
+	"github.com/metanonia/go-metanonia/log"
+	"github.com/metanonia/go-metanonia/params"
+	"github.com/metanonia/go-metanonia/rpc"
 )
 
 const sampleNumber = 3 // Number of transactions sampled in a block

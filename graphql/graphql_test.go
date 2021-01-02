@@ -24,12 +24,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/consensus/ethash"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/eth"
-	"github.com/ethereum/go-ethereum/miner"
-	"github.com/ethereum/go-ethereum/node"
+	"github.com/metanonia/go-metanonia/common"
+	"github.com/metanonia/go-metanonia/consensus/ethash"
+	"github.com/metanonia/go-metanonia/core"
+	"github.com/metanonia/go-metanonia/eth"
+	"github.com/metanonia/go-metanonia/miner"
+	"github.com/metanonia/go-metanonia/node"
 	"github.com/stretchr/testify/assert"
 )
 

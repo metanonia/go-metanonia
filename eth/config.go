@@ -24,13 +24,13 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/consensus/ethash"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/eth/downloader"
-	"github.com/ethereum/go-ethereum/eth/gasprice"
-	"github.com/ethereum/go-ethereum/miner"
-	"github.com/ethereum/go-ethereum/params"
+	"github.com/metanonia/go-metanonia/common"
+	"github.com/metanonia/go-metanonia/consensus/ethash"
+	"github.com/metanonia/go-metanonia/core"
+	"github.com/metanonia/go-metanonia/eth/downloader"
+	"github.com/metanonia/go-metanonia/eth/gasprice"
+	"github.com/metanonia/go-metanonia/miner"
+	"github.com/metanonia/go-metanonia/params"
 )
 
 // DefaultFullGPOConfig contains default gasprice oracle settings for full node.
