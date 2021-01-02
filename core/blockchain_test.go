@@ -27,17 +27,17 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/consensus"
-	"github.com/ethereum/go-ethereum/consensus/ethash"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/core/state"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/core/vm"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/ethereum/go-ethereum/params"
-	"github.com/ethereum/go-ethereum/trie"
+	"github.com/metanonia/gometanonnia/common"
+	"github.com/metanonia/gometanonnia/consensus"
+	"github.com/metanonia/gometanonnia/consensus/ethash"
+	"github.com/metanonia/gometanonnia/core/rawdb"
+	"github.com/metanonia/gometanonnia/core/state"
+	"github.com/metanonia/gometanonnia/core/types"
+	"github.com/metanonia/gometanonnia/core/vm"
+	"github.com/metanonia/gometanonnia/crypto"
+	"github.com/metanonia/gometanonnia/ethdb"
+	"github.com/metanonia/gometanonnia/params"
+	"github.com/metanonia/gometanonnia/trie"
 )
 
 // So we can deterministically seed different blockchains

@@ -19,9 +19,9 @@ package types
 import (
 	"io"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/metanonia/go-metanonia/common"
+	"github.com/metanonia/go-metanonia/common/hexutil"
+	"github.com/metanonia/go-metanonia/rlp"
 )
 
 //go:generate gencodec -type Log -field-override logMarshaling -out gen_log_json.go

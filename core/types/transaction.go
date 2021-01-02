@@ -24,10 +24,10 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/metanonia/go-metanonia/common"
+	"github.com/metanonia/go-metanonia/common/hexutil"
+	"github.com/metanonia/go-metanonia/crypto"
+	"github.com/metanonia/go-metanonia/rlp"
 )
 
 //go:generate gencodec -type txdata -field-override txdataMarshaling -out gen_tx_json.go

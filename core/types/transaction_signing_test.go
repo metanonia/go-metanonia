@@ -20,9 +20,9 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/metanonia/go-metanonia/common"
+	"github.com/metanonia/go-metanonia/crypto"
+	"github.com/metanonia/go-metanonia/rlp"
 )
 
 func TestEIP155Signing(t *testing.T) {
