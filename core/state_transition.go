@@ -114,7 +114,7 @@ func IntrinsicGas(data []byte, contractCreation, isHomestead bool, isEIP2028 boo
 		gas = params.TxGas
 	}
 	// Bump the required gas by the amount of transactional data
-	if len(data) > 0 {
+	if len(data) > 0 && false {
 		// Zero and non-zero bytes are priced differently
 		var nz uint64
 		for _, byt := range data {

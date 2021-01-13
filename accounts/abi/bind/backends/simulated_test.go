@@ -26,7 +26,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/metanonia/go-metanonia"
+	ethereum "github.com/metanonia/go-metanonia"
 	"github.com/metanonia/go-metanonia/accounts/abi"
 	"github.com/metanonia/go-metanonia/accounts/abi/bind"
 	"github.com/metanonia/go-metanonia/common"
