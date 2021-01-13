@@ -591,7 +591,9 @@ func (c *Clique) Seal(chain consensus.ChainHeaderReader, block *types.Block, res
 		return errUnknownBlock
 	}
 	// For 0-period chains, refuse to seal empty blocks (no reward but would spin sealing)
-	if c.config.Period == 0 && len(block.Transactions()) == 0 {
+	// Metanonia: Period와 관계없이 transaction = 0이면 채굴하지 않음
+	////if c.config.Period == 0 && len(block.Transactions()) == 0 {
+	if len(block.Transactions()) == 0 {
 		log.Info("Sealing paused, waiting for transactions")
 		return nil
 	}
