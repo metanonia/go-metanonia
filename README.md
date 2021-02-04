@@ -1,6 +1,8 @@
 ## Go Metanonia
 Forked from go-ethereum
 
+Cross Compile : make geth-cross
+
 ## License
 
 The go-metanonia library (i.e. all code outside of the `cmd` directory) is licensed under the
