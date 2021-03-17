@@ -47,6 +47,7 @@ type Transaction struct {
 }
 
 type txdata struct {
+	Type         uint64          `json:"type"     gencodec:"required"`
 	AccountNonce uint64          `json:"nonce"    gencodec:"required"`
 	Price        *big.Int        `json:"gasPrice" gencodec:"required"`
 	GasLimit     uint64          `json:"gas"      gencodec:"required"`
@@ -64,6 +65,7 @@ type txdata struct {
 }
 
 type txdataMarshaling struct {
+	Type         hexutil.Uint64
 	AccountNonce hexutil.Uint64
 	Price        *hexutil.Big
 	GasLimit     hexutil.Uint64
