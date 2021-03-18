@@ -38,6 +38,9 @@ const (
 	HashLength = 32
 	// AddressLength is the expected length of the address
 	AddressLength = 20
+
+	// CommonTransactionType
+	CommonTransactionType = 1
 )
 
 var (
